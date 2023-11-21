@@ -1,0 +1,991 @@
+// Output created by jacc on Tue Nov 21 16:12:11 EAT 2023
+
+state 0 (entry on Goal)
+    $accept : _Goal $end
+
+    CLASS shift 3
+    . error
+
+    Goal goto 1
+    MainClass goto 2
+
+state 1 (entry on Goal)
+    $accept : Goal_$end
+
+    $end accept
+    . error
+
+state 2 (entry on MainClass)
+    Goal : MainClass_'(' ClassDeclaration ')'    (1)
+
+    '(' shift 4
+    . error
+
+state 3 (entry on CLASS)
+    MainClass : CLASS_Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 5
+
+state 4 (entry on '(')
+    Goal : MainClass '('_ClassDeclaration ')'    (1)
+
+    CLASS shift 8
+    . error
+
+    ClassDeclaration goto 7
+
+state 5 (entry on Identifier)
+    MainClass : CLASS Identifier_'{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    '{' shift 9
+    . error
+
+state 6 (entry on IDENTIFIER)
+    Identifier : IDENTIFIER_    (22)
+
+    ')' reduce 22
+    '(' reduce 22
+    IDENTIFIER reduce 22
+    '{' reduce 22
+    '[' reduce 22
+    '=' reduce 22
+    ';' reduce 22
+    . error
+
+state 7 (entry on ClassDeclaration)
+    Goal : MainClass '(' ClassDeclaration_')'    (1)
+
+    ')' shift 10
+    . error
+
+state 8 (entry on CLASS)
+    ClassDeclaration : CLASS_Identifier '(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 11
+
+state 9 (entry on '{')
+    MainClass : CLASS Identifier '{'_PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    PUBLIC shift 12
+    . error
+
+state 10 (entry on ')')
+    Goal : MainClass '(' ClassDeclaration ')'_    (1)
+
+    $end reduce 1
+    . error
+
+state 11 (entry on Identifier)
+    ClassDeclaration : CLASS Identifier_'(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    '(' shift 13
+    . error
+
+state 12 (entry on PUBLIC)
+    MainClass : CLASS Identifier '{' PUBLIC_STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    STATIC shift 14
+    . error
+
+state 13 (entry on '(')
+    ClassDeclaration : CLASS Identifier '('_EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    EXTENDS shift 15
+    . error
+
+state 14 (entry on STATIC)
+    MainClass : CLASS Identifier '{' PUBLIC STATIC_VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    VOID shift 16
+    . error
+
+state 15 (entry on EXTENDS)
+    ClassDeclaration : CLASS Identifier '(' EXTENDS_Identifier ')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 17
+
+state 16 (entry on VOID)
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID_MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    MAIN shift 18
+    . error
+
+state 17 (entry on Identifier)
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier_')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    ')' shift 19
+    . error
+
+state 18 (entry on MAIN)
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN_'(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    '(' shift 20
+    . error
+
+state 19 (entry on ')')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')'_'?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    '?' shift 21
+    . error
+
+state 20 (entry on '(')
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '('_STRING '[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    STRING shift 22
+    . error
+
+state 21 (entry on '?')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?'_'{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    '{' shift 23
+    . error
+
+state 22 (entry on STRING)
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING_'[' ']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    '[' shift 24
+    . error
+
+state 23 (entry on '{')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{'_'(' VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    '(' shift 25
+    . error
+
+state 24 (entry on '[')
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '['_']' Identifier ')' '{' Statement '}' '}'    (2)
+
+    ']' shift 26
+    . error
+
+state 25 (entry on '(')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{' '('_VarDeclaration ')' '(' MethodDeclaration ')' '}'    (3)
+
+    IDENTIFIER shift 6
+    BOOLEAN shift 30
+    INTEGER shift 31
+    . error
+
+    Identifier goto 27
+    Type goto 28
+    VarDeclaration goto 29
+
+state 26 (entry on ']')
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']'_Identifier ')' '{' Statement '}' '}'    (2)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 32
+
+state 27 (entry on Identifier)
+    Type : Identifier_    (9)
+
+    IDENTIFIER reduce 9
+    . error
+
+state 28 (entry on Type)
+    VarDeclaration : Type_Identifier ';'    (4)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 33
+
+state 29 (entry on VarDeclaration)
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration_')' '(' MethodDeclaration ')' '}'    (3)
+
+    ')' shift 34
+    . error
+
+state 30 (entry on BOOLEAN)
+    Type : BOOLEAN_    (7)
+
+    IDENTIFIER reduce 7
+    . error
+
+state 31 (entry on INTEGER)
+    Type : INTEGER_'[' ']'    (6)
+    Type : INTEGER_'i'    (8)
+
+    '[' shift 35
+    'i' shift 36
+    . error
+
+state 32 (entry on Identifier)
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier_')' '{' Statement '}' '}'    (2)
+
+    ')' shift 37
+    . error
+
+state 33 (entry on Identifier)
+    VarDeclaration : Type Identifier_';'    (4)
+
+    ';' shift 38
+    . error
+
+state 34 (entry on ')')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')'_'(' MethodDeclaration ')' '}'    (3)
+
+    '(' shift 39
+    . error
+
+state 35 (entry on '[')
+    Type : INTEGER '['_']'    (6)
+
+    ']' shift 40
+    . error
+
+state 36 (entry on 'i')
+    Type : INTEGER 'i'_    (8)
+
+    IDENTIFIER reduce 8
+    . error
+
+state 37 (entry on ')')
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')'_'{' Statement '}' '}'    (2)
+
+    '{' shift 41
+    . error
+
+state 38 (entry on ';')
+    VarDeclaration : Type Identifier ';'_    (4)
+
+    ')' reduce 4
+    . error
+
+state 39 (entry on '(')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')' '('_MethodDeclaration ')' '}'    (3)
+
+    PUBLIC shift 43
+    . error
+
+    MethodDeclaration goto 42
+
+state 40 (entry on ']')
+    Type : INTEGER '[' ']'_    (6)
+
+    IDENTIFIER reduce 6
+    . error
+
+state 41 (entry on '{')
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{'_Statement '}' '}'    (2)
+
+    IDENTIFIER shift 6
+    IF shift 46
+    SYSTEM shift 47
+    WHILE shift 48
+    '{' shift 49
+    . error
+
+    Identifier goto 44
+    Statement goto 45
+
+state 42 (entry on MethodDeclaration)
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration_')' '}'    (3)
+
+    ')' shift 50
+    . error
+
+state 43 (entry on PUBLIC)
+    MethodDeclaration : PUBLIC_Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    BOOLEAN shift 30
+    INTEGER shift 31
+    . error
+
+    Identifier goto 27
+    Type goto 51
+
+state 44 (entry on Identifier)
+    Statement : Identifier_'=' Expression ';'    (14)
+    Statement : Identifier_'[' Expression ']' '=' Expression ';'    (15)
+
+    '=' shift 52
+    '[' shift 53
+    . error
+
+state 45 (entry on Statement)
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement_'}' '}'    (2)
+
+    '}' shift 54
+    . error
+
+state 46 (entry on IF)
+    Statement : IF_'(' Expression ')' Statement ELSE Statement    (11)
+
+    '(' shift 55
+    . error
+
+state 47 (entry on SYSTEM)
+    Statement : SYSTEM_OUT PRINTLN '(' Expression ')' ';'    (13)
+
+    OUT shift 56
+    . error
+
+state 48 (entry on WHILE)
+    Statement : WHILE_'(' Expression ')' Statement    (12)
+
+    '(' shift 57
+    . error
+
+state 49 (entry on '{')
+    Statement : '{'_'(' Statement ')' '}'    (10)
+
+    '(' shift 58
+    . error
+
+state 50 (entry on ')')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')'_'}'    (3)
+
+    '}' shift 59
+    . error
+
+state 51 (entry on Type)
+    MethodDeclaration : PUBLIC Type_Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 60
+
+state 52 (entry on '=')
+    Statement : Identifier '='_Expression ';'    (14)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 61
+
+state 53 (entry on '[')
+    Statement : Identifier '['_Expression ']' '=' Expression ';'    (15)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 64
+
+state 54 (entry on '}')
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}'_'}'    (2)
+
+    '}' shift 65
+    . error
+
+state 55 (entry on '(')
+    Statement : IF '('_Expression ')' Statement ELSE Statement    (11)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 66
+
+state 56 (entry on OUT)
+    Statement : SYSTEM OUT_PRINTLN '(' Expression ')' ';'    (13)
+
+    PRINTLN shift 67
+    . error
+
+state 57 (entry on '(')
+    Statement : WHILE '('_Expression ')' Statement    (12)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 68
+
+state 58 (entry on '(')
+    Statement : '{' '('_Statement ')' '}'    (10)
+
+    IDENTIFIER shift 6
+    IF shift 46
+    SYSTEM shift 47
+    WHILE shift 48
+    '{' shift 49
+    . error
+
+    Identifier goto 44
+    Statement goto 69
+
+state 59 (entry on '}')
+    ClassDeclaration : CLASS Identifier '(' EXTENDS Identifier ')' '?' '{' '(' VarDeclaration ')' '(' MethodDeclaration ')' '}'_    (3)
+
+    ')' reduce 3
+    . error
+
+state 60 (entry on Identifier)
+    MethodDeclaration : PUBLIC Type Identifier_'(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    '(' shift 70
+    . error
+
+state 61 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Statement : Identifier '=' Expression_';'    (14)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ';' shift 75
+    . error
+
+state 62 (entry on INTEGER)
+    Expression : INTEGER_    (21)
+
+    '+' reduce 21
+    '*' reduce 21
+    ')' reduce 21
+    ']' reduce 21
+    ';' reduce 21
+    '/' reduce 21
+    '-' reduce 21
+    . error
+
+state 63 (entry on '(')
+    Expression : '('_Expression ')'    (20)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 76
+
+state 64 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Statement : Identifier '[' Expression_']' '=' Expression ';'    (15)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ']' shift 77
+    . error
+
+state 65 (entry on '}')
+    MainClass : CLASS Identifier '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' Identifier ')' '{' Statement '}' '}'_    (2)
+
+    '(' reduce 2
+    . error
+
+state 66 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Statement : IF '(' Expression_')' Statement ELSE Statement    (11)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ')' shift 78
+    . error
+
+state 67 (entry on PRINTLN)
+    Statement : SYSTEM OUT PRINTLN_'(' Expression ')' ';'    (13)
+
+    '(' shift 79
+    . error
+
+state 68 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Statement : WHILE '(' Expression_')' Statement    (12)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ')' shift 80
+    . error
+
+state 69 (entry on Statement)
+    Statement : '{' '(' Statement_')' '}'    (10)
+
+    ')' shift 81
+    . error
+
+state 70 (entry on '(')
+    MethodDeclaration : PUBLIC Type Identifier '('_'(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    '(' shift 82
+    . error
+
+state 71 (entry on '*')
+    Expression : Expression '*'_Expression    (18)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 83
+
+state 72 (entry on '+')
+    Expression : Expression '+'_Expression    (16)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 84
+
+state 73 (entry on '-')
+    Expression : Expression '-'_Expression    (17)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 85
+
+state 74 (entry on '/')
+    Expression : Expression '/'_Expression    (19)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 86
+
+state 75 (entry on ';')
+    Statement : Identifier '=' Expression ';'_    (14)
+
+    ')' reduce 14
+    ELSE reduce 14
+    '}' reduce 14
+    . error
+
+state 76 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Expression : '(' Expression_')'    (20)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ')' shift 87
+    . error
+
+state 77 (entry on ']')
+    Statement : Identifier '[' Expression ']'_'=' Expression ';'    (15)
+
+    '=' shift 88
+    . error
+
+state 78 (entry on ')')
+    Statement : IF '(' Expression ')'_Statement ELSE Statement    (11)
+
+    IDENTIFIER shift 6
+    IF shift 46
+    SYSTEM shift 47
+    WHILE shift 48
+    '{' shift 49
+    . error
+
+    Identifier goto 44
+    Statement goto 89
+
+state 79 (entry on '(')
+    Statement : SYSTEM OUT PRINTLN '('_Expression ')' ';'    (13)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 90
+
+state 80 (entry on ')')
+    Statement : WHILE '(' Expression ')'_Statement    (12)
+
+    IDENTIFIER shift 6
+    IF shift 46
+    SYSTEM shift 47
+    WHILE shift 48
+    '{' shift 49
+    . error
+
+    Identifier goto 44
+    Statement goto 91
+
+state 81 (entry on ')')
+    Statement : '{' '(' Statement ')'_'}'    (10)
+
+    '}' shift 92
+    . error
+
+state 82 (entry on '(')
+    MethodDeclaration : PUBLIC Type Identifier '(' '('_Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    BOOLEAN shift 30
+    INTEGER shift 31
+    . error
+
+    Identifier goto 27
+    Type goto 93
+
+state 83 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression '*' Expression_    (18)
+    Expression : Expression_'/' Expression    (19)
+
+    '+' shift 72
+    '-' shift 73
+    '*' reduce 18
+    ')' reduce 18
+    ']' reduce 18
+    ';' reduce 18
+    '/' reduce 18
+    . error
+
+state 84 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression '+' Expression_    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+
+    '+' reduce 16
+    '*' reduce 16
+    ')' reduce 16
+    ']' reduce 16
+    ';' reduce 16
+    '/' reduce 16
+    '-' reduce 16
+    . error
+
+state 85 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression '-' Expression_    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+
+    '+' reduce 17
+    '*' reduce 17
+    ')' reduce 17
+    ']' reduce 17
+    ';' reduce 17
+    '/' reduce 17
+    '-' reduce 17
+    . error
+
+state 86 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Expression : Expression '/' Expression_    (19)
+
+    '+' shift 72
+    '-' shift 73
+    '*' reduce 19
+    ')' reduce 19
+    ']' reduce 19
+    ';' reduce 19
+    '/' reduce 19
+    . error
+
+state 87 (entry on ')')
+    Expression : '(' Expression ')'_    (20)
+
+    '+' reduce 20
+    '*' reduce 20
+    ')' reduce 20
+    ']' reduce 20
+    ';' reduce 20
+    '/' reduce 20
+    '-' reduce 20
+    . error
+
+state 88 (entry on '=')
+    Statement : Identifier '[' Expression ']' '='_Expression ';'    (15)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 94
+
+state 89 (entry on Statement)
+    Statement : IF '(' Expression ')' Statement_ELSE Statement    (11)
+
+    ELSE shift 95
+    . error
+
+state 90 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Statement : SYSTEM OUT PRINTLN '(' Expression_')' ';'    (13)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ')' shift 96
+    . error
+
+state 91 (entry on Statement)
+    Statement : WHILE '(' Expression ')' Statement_    (12)
+
+    ')' reduce 12
+    ELSE reduce 12
+    '}' reduce 12
+    . error
+
+state 92 (entry on '}')
+    Statement : '{' '(' Statement ')' '}'_    (10)
+
+    ')' reduce 10
+    ELSE reduce 10
+    '}' reduce 10
+    . error
+
+state 93 (entry on Type)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type_Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 97
+
+state 94 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    Statement : Identifier '[' Expression ']' '=' Expression_';'    (15)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ';' shift 98
+    . error
+
+state 95 (entry on ELSE)
+    Statement : IF '(' Expression ')' Statement ELSE_Statement    (11)
+
+    IDENTIFIER shift 6
+    IF shift 46
+    SYSTEM shift 47
+    WHILE shift 48
+    '{' shift 49
+    . error
+
+    Identifier goto 44
+    Statement goto 99
+
+state 96 (entry on ')')
+    Statement : SYSTEM OUT PRINTLN '(' Expression ')'_';'    (13)
+
+    ';' shift 100
+    . error
+
+state 97 (entry on Identifier)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier_'(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    '(' shift 101
+    . error
+
+state 98 (entry on ';')
+    Statement : Identifier '[' Expression ']' '=' Expression ';'_    (15)
+
+    ')' reduce 15
+    ELSE reduce 15
+    '}' reduce 15
+    . error
+
+state 99 (entry on Statement)
+    Statement : IF '(' Expression ')' Statement ELSE Statement_    (11)
+
+    ')' reduce 11
+    ELSE reduce 11
+    '}' reduce 11
+    . error
+
+state 100 (entry on ';')
+    Statement : SYSTEM OUT PRINTLN '(' Expression ')' ';'_    (13)
+
+    ')' reduce 13
+    ELSE reduce 13
+    '}' reduce 13
+    . error
+
+state 101 (entry on '(')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '('_',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    ',' shift 102
+    . error
+
+state 102 (entry on ',')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ','_Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    BOOLEAN shift 30
+    INTEGER shift 31
+    . error
+
+    Identifier goto 27
+    Type goto 103
+
+state 103 (entry on Type)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type_Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    . error
+
+    Identifier goto 104
+
+state 104 (entry on Identifier)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier_')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    ')' shift 105
+    . error
+
+state 105 (entry on ')')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')'_')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    ')' shift 106
+    . error
+
+state 106 (entry on ')')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')'_'?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    '?' shift 107
+    . error
+
+state 107 (entry on '?')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?'_')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    ')' shift 108
+    . error
+
+state 108 (entry on ')')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')'_'{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    '{' shift 109
+    . error
+
+state 109 (entry on '{')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{'_'(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    '(' shift 110
+    . error
+
+state 110 (entry on '(')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '('_VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    BOOLEAN shift 30
+    INTEGER shift 31
+    . error
+
+    Identifier goto 27
+    Type goto 28
+    VarDeclaration goto 111
+
+state 111 (entry on VarDeclaration)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration_')' '(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    ')' shift 112
+    . error
+
+state 112 (entry on ')')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')'_'(' Statement ')' RETURN Expression ';' '}'    (5)
+
+    '(' shift 113
+    . error
+
+state 113 (entry on '(')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '('_Statement ')' RETURN Expression ';' '}'    (5)
+
+    IDENTIFIER shift 6
+    IF shift 46
+    SYSTEM shift 47
+    WHILE shift 48
+    '{' shift 49
+    . error
+
+    Identifier goto 44
+    Statement goto 114
+
+state 114 (entry on Statement)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement_')' RETURN Expression ';' '}'    (5)
+
+    ')' shift 115
+    . error
+
+state 115 (entry on ')')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')'_RETURN Expression ';' '}'    (5)
+
+    RETURN shift 116
+    . error
+
+state 116 (entry on RETURN)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN_Expression ';' '}'    (5)
+
+    INTEGER shift 62
+    '(' shift 63
+    . error
+
+    Expression goto 117
+
+state 117 (entry on Expression)
+    Expression : Expression_'+' Expression    (16)
+    Expression : Expression_'-' Expression    (17)
+    Expression : Expression_'*' Expression    (18)
+    Expression : Expression_'/' Expression    (19)
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression_';' '}'    (5)
+
+    '*' shift 71
+    '+' shift 72
+    '-' shift 73
+    '/' shift 74
+    ';' shift 118
+    . error
+
+state 118 (entry on ';')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';'_'}'    (5)
+
+    '}' shift 119
+    . error
+
+state 119 (entry on '}')
+    MethodDeclaration : PUBLIC Type Identifier '(' '(' Type Identifier '(' ',' Type Identifier ')' ')' '?' ')' '{' '(' VarDeclaration ')' '(' Statement ')' RETURN Expression ';' '}'_    (5)
+
+    ')' reduce 5
+    . error
+
+43 terminals, 9 nonterminals;
+22 grammar rules, 120 states;
+0 shift/reduce and 0 reduce/reduce conflicts reported.
